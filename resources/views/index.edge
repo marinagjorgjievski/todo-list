@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     {{ style('style') }}
   </head>
@@ -44,7 +45,6 @@
               </form>
             </div>
           </li>
-
           <script>
             document.getElementById("ch-{{todo.id}}").addEventListener("click", function() {
               document.querySelector('#'+this.id).closest('form').submit();
@@ -52,6 +52,20 @@
           </script>
           @endeach
         </ul>
+        <div class="footer">
+          <div>
+            <span>Active - </span>
+            <span>{{stats.active}}</span>
+          </div>
+          <div>
+            <span>Completed - </span>
+            <span>{{todos.length - stats.active }}</span>
+          </div>
+          <div>
+            <span>All - </span>
+            <span>{{todos.length }}</span>
+          </div>
+        </div>
       </section>
     </section>
   </body>

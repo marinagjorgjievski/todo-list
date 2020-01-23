@@ -1,6 +1,5 @@
 'use strict'
 
-
 //Bring a model
 
 const Todo = use('App/Models/Todo')
@@ -9,9 +8,17 @@ class TodoController {
 
   async index({request,response,view,params}) {
     const todos = await Todo.all();
+    const statsActive = await Todo
+      .query()
+      .where('completed', false)
+      .count('* as total');
+
     return view.render('index', {
       name: 'name',
-      todos: todos.toJSON()
+      todos: todos.toJSON(),
+      stats: {
+        active: statsActive[0].total,
+      }
     })
   }
 

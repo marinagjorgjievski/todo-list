@@ -18,3 +18,4 @@ const Route = use('Route')
 
 Route.get('/', 'TodoController.index')
 Route.resource('todos', 'TodoController')
+
